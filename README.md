@@ -2,12 +2,12 @@
 https://app.diagrams.net/#G1at3EE6l8RtWnfuNxM5wd7_AaHinR6BgA
 
 Health:
--unsigned int health
-+Losehealth()
+-int health
++void Losehealth()
 
 Score:
--unsigned int score
-+Addpoints()
+-int score
++void Addpoints()
 
 XYpos:
 -double x
@@ -17,27 +17,27 @@ Game:
 -Score score
 -Health health
 -Array(sprite) Enemy
-+Start()
++void Start()
 
 Sprite:
 -XYpos xypos
 -XYpos sprite_position
-+time()
++void Time()
 
 Player extends Sprite:
 -Health health
-+Shoot()
-+Movement()
-+Gettinghit()
++void Shoot()
++void Movement()
++void Gettinghit()
 
 Alien extends Sprite:
 -Health health
-+Shoot()
-+Death()
-+Move()
++void Shoot()
++void Death()
++void Move()
 
 Cover extends Sprite:
-+Destruction()
++void Destruction()
 
 
 
