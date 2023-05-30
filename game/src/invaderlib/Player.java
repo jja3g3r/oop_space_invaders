@@ -1,7 +1,9 @@
 package invaderlib;
 
 public class Player extends Sprite{
-    private Health health;
+    Player(XYpos newXYpos, XYpos newSpritePos, Health newHealth){
+        super(newXYpos, newSpritePos,newHealth);
+    }
     public void Shoot(){}
     public void Movement(){}
     public void Gettinghit(){}
