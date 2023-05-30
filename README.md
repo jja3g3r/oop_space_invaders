@@ -22,18 +22,22 @@ Game:
 Sprite:
 -XYpos xypos
 -XYpos sprite_position
+-Health health
 +void Time()
+//todo
++void Movement()
 
 Player extends Sprite:
--Health health
 +void Shoot()
-+void Movement()
 +void Gettinghit()
+//todo remove
++void Movement()
 
 Alien extends Sprite:
 -Health health
 +void Shoot()
 +void Death()
+//todo remove
 +void Move()
 
 Cover extends Sprite:
