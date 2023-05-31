@@ -1,10 +1,13 @@
 package invaderlib;
 
 public class Alien extends Sprite{
-    Alien(XYpos newXYpos, XYpos newSpritePos, Health newHealth){
-        super(newXYpos, newSpritePos, newHealth);
+    Alien(XYpos newXYpos, XYpos newSpritePos){
+        super(newXYpos, newSpritePos);
     }
     public void Shoot(){}
+    @Override
     public void Death(){}
-    public void Move(){}
+    @Override
+    public void Movement(){}
+    public boolean LoseCheck(){return false;}
 }

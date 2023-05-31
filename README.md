@@ -18,9 +18,8 @@ Window:
 -int speed
 -Score score
 -Health health
--Array(Sprite) Enemy
+-Array(Sprite) Enemys
 +bool WinCheck()
-
 
 ScoreTable:
 -Window pWindow
