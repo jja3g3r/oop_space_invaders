@@ -1,5 +1,10 @@
 import processing.core.PApplet;
 
+public class Main {
+    public static void main(String[] args){PApplet.main("Window");}
+}
+
+/*
 public class Main extends PApplet
 {
     public static void main( String[] args )
@@ -12,7 +17,7 @@ public class Main extends PApplet
      * settings
      * sets the window-size
      */
-
+/*
     @Override
     public void settings()
     {
@@ -30,4 +35,4 @@ public class Main extends PApplet
     {
         background( 255 );
     }
-}
+}*/
