@@ -8,38 +8,46 @@ Health:
 Score:
 -int score
 +void Addpoints()
++void DisplayScore()
 
 XYpos:
 -double x
 -double y
 
-Game:
+Window:
+-int speed
 -Score score
 -Health health
--Array(sprite) Enemy
+-Array(Sprite) Enemy
++bool WinCheck()
+
+
+ScoreTable:
+-Window pWindow
+-Array(Sprite) table
 +void Start()
 
 Sprite:
+-Window pWindow
 -XYpos xypos
 -XYpos sprite_position
--Health health
 +void Time()
-//todo
++void Death()
 +void Movement()
 
 Player extends Sprite:
-+void Shoot()
++void Shooting()
 +void Gettinghit()
-//todo remove
-+void Movement()
 
 Alien extends Sprite:
--Health health
-+void Shoot()
-+void Death()
-//todo remove
-+void Move()
++void Shooting()
++bool LoseCheck()
 
+Shoot extends Sprite:
++void CollisionCheck()
+
+
+//not for now
 Cover extends Sprite:
 +void Destruction()
 
