@@ -1,8 +1,8 @@
 package invaderlib;
 
 public class Player extends Sprite{
-    Player(XYpos newXYpos, XYpos newSpritePos){
-        super(newXYpos, newSpritePos);
+    Player(float newX, float newY, float newSX, float newSY){
+        super(newX, newY, newSX, newSY);
     }
     public void Shooting(){}
     public void GettingHit(){}

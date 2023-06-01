@@ -1,6 +1,8 @@
 package invaderlib;
 
 public class Cover extends Sprite{
-    Cover(XYpos newXYpos, XYpos newSpritePos){super(newXYpos, newSpritePos);}
+    Cover(float newX, float newY, float newSX, float newSY){
+        super(newX, newY, newSX, newSY);
+    }
     public void Destruction(){}
 }
