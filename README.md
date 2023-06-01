@@ -21,10 +21,19 @@ Window:
 -Array(Sprite) Enemys
 +bool WinCheck()
 
-ScoreTable:
+SpriteTable:
 -Window pWindow
 -Array(Sprite) table
+
+ScoreTable extends SpriteTable:
 +void Start()
+
+Navy extends SpriteTable:
++Array(Alien) ships
++void NavalManouvre
+
+Daka extends SpriteTable:
++void MoveBullets
 
 Sprite:
 -Window pWindow

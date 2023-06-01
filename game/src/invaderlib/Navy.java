@@ -13,7 +13,6 @@ public class Navy {
                 y++;
             }
             ships[i] = new Alien((i%11)*16,10*y,10,10);
-
         }
         return this;
     }
