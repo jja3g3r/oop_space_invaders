@@ -20,12 +20,14 @@ public class Navy extends SpriteTable{
     public void NavalManouvre(){
         boolean advance = false;
         for(int i = 0; i < 55; i++){
-            if(table.get(i).GetXYpos().GetX() + 16 >= 400){
-                ((Alien)table.get(i)).direction = false;
-                advance = true;
-            }else if(table.get(i).GetXYpos().GetX() <= 0) {
-                ((Alien)table.get(i)).direction = true;
-                advance = true;
+            if(((Alien)table.get(i)).GetDead() == false){
+                if(table.get(i).GetXYpos().GetX() + 16 >= pWindow.GetWidth()){
+                    ((Alien)table.get(i)).direction = false;
+                    advance = true;
+                }else if(table.get(i).GetXYpos().GetX() <= 0) {
+                    ((Alien)table.get(i)).direction = true;
+                    advance = true;
+                }
             }
         }
         for(int i = 0; i < 55; i++){

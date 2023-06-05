@@ -16,5 +16,8 @@ public class Shoot extends Sprite{
         }
     }
     @Override
-    public void Death(){}
+    public void Death(){
+        xypos.SetX(20000);
+        xypos.SetY(20000);
+    }
 }

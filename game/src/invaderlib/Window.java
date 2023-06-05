@@ -45,7 +45,7 @@ public class Window extends PApplet {
             image(x.placeholder,x.GetXYpos().GetX(),x.GetXYpos().GetY(),20,20);
         }
         image(player.placeholder,player.GetXYpos().GetX(),player.GetXYpos().GetY(),20,20);
-
+        CollisionControl.Collisionthing(navy,dakka,player);
     }
     public int GetWidth(){return this.width;}
     public int GetHeight(){return this.height;}
