@@ -2,8 +2,8 @@ package invaderlib;
 
 public class Alien extends Sprite{
     public static boolean direction;
-    Alien(float newX, float newY, float newSX, float newSY){
-        super(newX, newY, newSX, newSY);
+    Alien(float newX, float newY, float newSX, float newSY, Window newWindow){
+        super(newX, newY, newSX, newSY, newWindow);
         direction = true;
     }
     public void Shoot(){}

@@ -2,8 +2,8 @@ package invaderlib;
 
 public class Player extends Sprite{
     public boolean direction;
-    Player(float newX, float newY, float newSX, float newSY){
-        super(newX, newY, newSX, newSY);
+    Player(float newX, float newY, float newSX, float newSY, Window newWindow){
+        super(newX, newY, newSX, newSY,newWindow);
     }
     public void Shooting(){}
     public void GettingHit(){}
@@ -11,10 +11,10 @@ public class Player extends Sprite{
     public void Death(){}
     @Override
     public void Movement(){
-        if(direction == true){
-            this.xypos.SetX(xypos.GetX() + 1);
-        }else if(direction == false){
-            this.xypos.SetX(xypos.GetX() - 1);
+        if(direction == true && xypos.GetX() <= pWindow.GetWidth()-17 ){
+            this.xypos.SetX(xypos.GetX() + 3);
+        }else if(direction == false && xypos.GetX() >= 0){
+            this.xypos.SetX(xypos.GetX() - 3);
         }
     }
 }

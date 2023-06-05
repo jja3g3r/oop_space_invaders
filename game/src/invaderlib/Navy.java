@@ -1,9 +1,10 @@
 package invaderlib;
 
 public class Navy {
+    private Window pWindow;
     public Alien[] ships;
-    Navy(){
-        this.Setships();
+    Navy(Window newWindow){
+        this.Setships().SetWindow(newWindow);
     }
     private Navy Setships(){
         this.ships = new Alien[55];
@@ -12,8 +13,12 @@ public class Navy {
             if(i % 11 == 0){
                 y++;
             }
-            ships[i] = new Alien((i%11)*16,10*y,10,10);
+            ships[i] = new Alien((i%11)*16,10*y,10,10, pWindow);
         }
+        return this;
+    }
+    private Navy SetWindow(Window newWindow){
+        this.pWindow = newWindow;
         return this;
     }
     public void NavalManouvre(){

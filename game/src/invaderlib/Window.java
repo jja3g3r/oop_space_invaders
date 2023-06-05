@@ -4,7 +4,7 @@ import processing.core.PApplet;
 public class Window extends PApplet {
     private Score score;
     private Health health;
-    private int speed;
+    private int speed, width = 400, height = 600;
     private Navy navy;
     private Player player;
     private boolean WinCheck(){
@@ -12,16 +12,16 @@ public class Window extends PApplet {
     }
     @Override
     public void setup(){
-        navy = new Navy();
+        navy = new Navy(this);
         for(int i = 0; i < 55; i++){
             navy.ships[i].placeholder = loadImage("../Placeholder.png");
         }
-        player = new Player(200,550,10,10);
+        player = new Player(200,550,10,10,this);
         player.placeholder = loadImage("../Placeholder.png");
     }
     @Override
     public void settings(){
-        setSize(400,600);
+        setSize(width,height);
     }
     @Override
     public void keyPressed(){
@@ -42,4 +42,6 @@ public class Window extends PApplet {
         }
         image(player.placeholder,player.GetXYpos().GetX(),player.GetXYpos().GetY());
     }
+    public int GetWidth(){return this.width;}
+    public int GetHeight(){return this.height;}
 }
