@@ -7,7 +7,12 @@ public class Sprite {
     public PImage placeholder;
     Sprite(){}
     Sprite(float newX, float newY, float newSX, float newSY, Window newWindow){
-        this.SetXYpos(newX, newY).SetSpritePos(newX, newY).SetpWindow(newWindow);
+        SetXYpos(newX, newY).SetSpritePos(newX, newY).SetpWindow(newWindow);
+        placeholder = pWindow.loadImage("../jojo.png");
+    }
+    Sprite(float newX, float newY, float newSX, float newSY){
+        SetXYpos(newX, newY).SetSpritePos(newX, newY);
+        placeholder = pWindow.loadImage("../Placeholder.png");
     }
     public void Time(){}
     public void Death(){}

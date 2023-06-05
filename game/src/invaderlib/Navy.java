@@ -1,43 +1,38 @@
 package invaderlib;
+import java.util.Vector;
 
-public class Navy {
-    private Window pWindow;
-    public Alien[] ships;
+public class Navy extends SpriteTable{
     Navy(Window newWindow){
-        this.Setships().SetWindow(newWindow);
+        super(newWindow);
+        Setships();
     }
     private Navy Setships(){
-        this.ships = new Alien[55];
+        table = new Vector<>();
         int y = 0;
         for(int i = 0; i < 55; i++){
             if(i % 11 == 0){
                 y++;
             }
-            ships[i] = new Alien((i%11)*16,10*y,10,10, pWindow);
+            table.add(new Alien((i%11)*16,10*y,10,10, pWindow));
         }
-        return this;
-    }
-    private Navy SetWindow(Window newWindow){
-        this.pWindow = newWindow;
         return this;
     }
     public void NavalManouvre(){
         boolean advance = false;
         for(int i = 0; i < 55; i++){
-            if(ships[i].GetXYpos().GetX() + 16 >= 400){
-                ships[i].direction = false;
+            if(table.get(i).GetXYpos().GetX() + 16 >= 400){
+                ((Alien)table.get(i)).direction = false;
                 advance = true;
-            }else if(ships[i].GetXYpos().GetX() <= 0) {
-                ships[i].direction = true;
+            }else if(table.get(i).GetXYpos().GetX() <= 0) {
+                ((Alien)table.get(i)).direction = true;
                 advance = true;
             }
         }
         for(int i = 0; i < 55; i++){
             if(advance == true){
-                ships[i].GetXYpos().SetY(ships[i].GetXYpos().GetY() + 10);
+                table.get(i).GetXYpos().SetY(table.get(i).GetXYpos().GetY() + 10);
             }
-            ships[i].Movement();
-
+            table.get(i).Movement();
         }
     }
 }

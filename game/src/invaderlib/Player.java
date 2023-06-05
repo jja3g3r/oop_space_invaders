@@ -5,7 +5,9 @@ public class Player extends Sprite{
     Player(float newX, float newY, float newSX, float newSY, Window newWindow){
         super(newX, newY, newSX, newSY,newWindow);
     }
-    public void Shooting(){}
+    public void Shooting(Window window){
+        window.GetDakka().AddShoot(xypos,false);
+    }
     public void GettingHit(){}
     @Override
     public void Death(){}

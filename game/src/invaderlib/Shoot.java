@@ -1,8 +1,8 @@
 package invaderlib;
 
 public class Shoot extends Sprite{
-    public Shoot(float newX, float newY, float newSX, float newSY, boolean newUPDOWN){
-        super();
+    public Shoot(XYpos xypos, XYpos sxypos, boolean newUPDOWN,Window pWindow){
+        super(xypos.GetX(), xypos.GetY(), sxypos.GetX(), sxypos.GetY(), pWindow);
         updown = newUPDOWN;
     }
     private boolean updown;
