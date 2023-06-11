@@ -29,6 +29,7 @@ public class Window extends PApplet {
         setSize(width, height);
     }
 
+
     @Override
     public void keyPressed() {
         if (key == 'd') {
@@ -39,8 +40,12 @@ public class Window extends PApplet {
             player.Movement();
         } else if (key == 'w') {
             player.Shooting(this);
+        } else if (keyCode == BACKSPACE) {
+            // Reset the game
+            resetGame();
         }
     }
+
 
 
     @Override
@@ -59,7 +64,7 @@ public class Window extends PApplet {
             fill(255);
             text("Score: " + currentScore, width / 2, height / 2);
             textSize(24);
-            text("Press SPACE to restart", width / 2, height / 2 + 50);
+            text("Press BACKSPACE to restart", width / 2, height / 2 + 50);
 
             // Stop further execution of the draw method
             return;
@@ -107,5 +112,18 @@ public class Window extends PApplet {
 
     public DAKKA GetDakka() {
         return this.dakka;
+    }
+    private void resetGame() {
+        // Reset the score
+        currentScore = 0;
+
+        // Clear all objects
+        navy.table.clear();
+        dakka.table.clear();
+
+        // Create new instances of navy, dakka, and player
+        navy = new Navy(this);
+        dakka = new DAKKA(this);
+        player = new Player(200, 550, 10, 10, this);
     }
 }
