@@ -1,6 +1,7 @@
 package invaderlib;
 
 import processing.core.PApplet;
+
 public class Window extends PApplet {
     private Score score;
     private Health health;
@@ -8,46 +9,84 @@ public class Window extends PApplet {
     private Navy navy;
     private DAKKA dakka;
     private Player player;
-    private boolean WinCheck(){
+
+    // New variable to keep track of the score
+    private int currentScore = 0;
+
+    public boolean WinCheck() {
         return false;
     }
+
     @Override
-    public void setup(){
+    public void setup() {
         navy = new Navy(this);
         dakka = new DAKKA(this);
-        player = new Player(200,550,10,10,this);
+        player = new Player(200, 550, 10, 10, this);
     }
+
     @Override
-    public void settings(){
-        setSize(width,height);
+    public void settings() {
+        setSize(width, height);
     }
+
     @Override
-    public void keyPressed(){
-        if(key == 'd'){
+    public void keyPressed() {
+        if (key == 'd') {
             player.direction = true;
             player.Movement();
-        }else if(key == 'a'){
+        } else if (key == 'a') {
             player.direction = false;
             player.Movement();
-        }else if(key == 'w'){
+        } else if (key == 'w') {
             player.Shooting(this);
         }
     }
+
     @Override
-    public void draw(){
+    public void draw() {
         background(0);
+
+        // Display the score at the top right corner
+        textAlign(RIGHT);
+        textSize(16);
+        fill(255);
+        text("Score: " + currentScore, width - 10, 20);
+
         navy.NavalManouvre();
-        for(int i = 0; i < 55; i++){
-            image(navy.table.get(i).placeholder, navy.table.get(i).GetXYpos().GetX(), navy.table.get(i).GetXYpos().GetY(),20,20);
+
+        // Draw the navy sprites
+        for (int i = 0; i < 55; i++) {
+            image(navy.table.get(i).placeholder, navy.table.get(i).GetXYpos().GetX(),
+                    navy.table.get(i).GetXYpos().GetY(), 20, 20);
         }
-        for(Sprite x : dakka.table){
+
+        // Move and draw the dakka sprites
+        for (Sprite x : dakka.table) {
             x.Movement();
-            image(x.placeholder,x.GetXYpos().GetX(),x.GetXYpos().GetY(),20,20);
+            image(x.placeholder, x.GetXYpos().GetX(), x.GetXYpos().GetY(), 20, 20);
         }
-        image(player.placeholder,player.GetXYpos().GetX(),player.GetXYpos().GetY(),20,20);
-        CollisionControl.Collisionthing(navy,dakka,player);
+
+        // Draw the player sprite
+        image(player.placeholder, player.GetXYpos().GetX(), player.GetXYpos().GetY(), 20, 20);
+
+        // Perform collision control
+        boolean alienRemoved = CollisionControl.Collisionthing(navy, dakka, player);
+
+        // If an alien is removed, increment the score by one
+        if (alienRemoved) {
+            currentScore++;
+        }
     }
-    public int GetWidth(){return this.width;}
-    public int GetHeight(){return this.height;}
-    public DAKKA GetDakka(){return this.dakka;}
+
+    public int GetWidth() {
+        return this.width;
+    }
+
+    public int GetHeight() {
+        return this.height;
+    }
+
+    public DAKKA GetDakka() {
+        return this.dakka;
+    }
 }
