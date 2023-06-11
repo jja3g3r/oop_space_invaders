@@ -39,6 +39,8 @@ public class Window extends PApplet {
             player.Movement();
         } else if (key == 'w') {
             player.Shooting(this);
+        } else if (keyCode == BACKSPACE) {
+            resetGame();
         }
     }
 
@@ -89,4 +91,17 @@ public class Window extends PApplet {
     public DAKKA GetDakka() {
         return this.dakka;
     }
+
+    private void resetGame() {
+        // Reset the current score to 0
+        currentScore = 0;
+
+        // Reset any other necessary game state variables and objects
+
+        // Reinitialize the navy, dakka, and player objects
+        navy = new Navy(this);
+        dakka = new DAKKA(this);
+        player = new Player(200, 550, 10, 10, this);
+    }
+
 }
