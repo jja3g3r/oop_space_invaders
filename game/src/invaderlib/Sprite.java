@@ -1,5 +1,6 @@
 package invaderlib;
 import processing.core.PImage;
+import invaderlib.XYpos;
 
 public class Sprite {
     protected Window pWindow;

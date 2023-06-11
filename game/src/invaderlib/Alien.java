@@ -7,6 +7,7 @@ public class Alien extends Sprite{
         super(newX, newY, newSX, newSY, newWindow);
         direction = true;
         dead = false;
+        placeholder = pWindow.loadImage("../blue.png");
     }
     public void Shoot(){}
     @Override

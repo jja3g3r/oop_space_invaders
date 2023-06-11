@@ -4,6 +4,7 @@ public class Player extends Sprite{
     public boolean direction;
     Player(float newX, float newY, float newSX, float newSY, Window newWindow){
         super(newX, newY, newSX, newSY,newWindow);
+        placeholder = pWindow.loadImage("../cannon.png");
     }
     public void Shooting(Window window){
         window.GetDakka().AddShoot(xypos,false);

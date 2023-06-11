@@ -1,9 +1,11 @@
 package invaderlib;
 
+
 public class Shoot extends Sprite{
     public Shoot(XYpos xypos, XYpos sxypos, boolean newUPDOWN,Window pWindow){
         super(xypos.GetX(), xypos.GetY(), sxypos.GetX(), sxypos.GetY(), pWindow);
         updown = newUPDOWN;
+        placeholder = pWindow.loadImage("../shot.png");
     }
     private boolean updown;
     public void CollisionCheck(){}
