@@ -1,38 +1,52 @@
 package invaderlib;
+import java.util.Vector;
 
-public class Navy {
-    public Alien[] ships;
-    Navy(){
-        this.Setships();
+public class Navy extends SpriteTable{
+    Navy(Window newWindow){
+        super(newWindow);
+        Setships();
     }
-    private Navy Setships(){
-        this.ships = new Alien[55];
+    private Navy Setships() {
+        table = new Vector<>();
         int y = 0;
-        for(int i = 0; i < 55; i++){
-            if(i % 11 == 0){
+        for (int i = 0; i < 55; i++) {
+            if (i % 11 == 0) {
                 y++;
             }
-            ships[i] = new Alien((i%11)*16,10*y,10,10);
+            table.add(new Alien((i % 11) * 16, 10 * y, 10, 10, pWindow));
         }
         return this;
     }
-    public void NavalManouvre(){
+    public void NavalManouvre() {
         boolean advance = false;
-        for(int i = 0; i < 55; i++){
-            if(ships[i].GetXYpos().GetX() + 16 >= 400){
-                ships[i].direction = false;
-                advance = true;
-            }else if(ships[i].GetXYpos().GetX() <= 0) {
-                ships[i].direction = true;
-                advance = true;
+        boolean allAliensDead = true; // Track if all aliens are dead
+
+        for (int i = 0; i < 55; i++) {
+            if (((Alien) table.get(i)).GetDead() == false) {
+                allAliensDead = false; // At least one alien is alive
+
+                if (table.get(i).GetXYpos().GetX() + 16 >= pWindow.GetWidth()) {
+                    ((Alien) table.get(i)).direction = false;
+                    advance = true;
+                } else if (table.get(i).GetXYpos().GetX() <= 0) {
+                    ((Alien) table.get(i)).direction = true;
+                    advance = true;
+                }
             }
         }
-        for(int i = 0; i < 55; i++){
-            if(advance == true){
-                ships[i].GetXYpos().SetY(ships[i].GetXYpos().GetY() + 10);
-            }
-            ships[i].Movement();
 
+        if (allAliensDead) {
+            table.clear(); // Clear the existing alien sprites
+            Setships(); // Create a new navy
+        }
+
+        for (int i = 0; i < 55; i++) {
+            if (advance == true) {
+                table.get(i).GetXYpos().SetY(table.get(i).GetXYpos().GetY() + 10);
+            }
+            table.get(i).Movement();
         }
     }
+
+
 }

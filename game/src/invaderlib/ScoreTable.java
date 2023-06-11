@@ -1,7 +1,6 @@
 package invaderlib;
 
-public class ScoreTable {
-    private Window pWindow;
-    private Sprite[] table;
+public class ScoreTable extends SpriteTable{
+    ScoreTable(Window newWindow){super(newWindow);}
     public void Start(){}
 }

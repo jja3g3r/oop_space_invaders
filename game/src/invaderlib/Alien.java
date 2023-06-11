@@ -2,13 +2,20 @@ package invaderlib;
 
 public class Alien extends Sprite{
     public static boolean direction;
-    Alien(float newX, float newY, float newSX, float newSY){
-        super(newX, newY, newSX, newSY);
+    private boolean dead;
+    Alien(float newX, float newY, float newSX, float newSY, Window newWindow){
+        super(newX, newY, newSX, newSY, newWindow);
         direction = true;
+        dead = false;
+        placeholder = pWindow.loadImage("../blue.png");
     }
     public void Shoot(){}
     @Override
-    public void Death(){}
+    public void Death(){
+        xypos.SetX(20000);
+        xypos.SetY(20000);
+        dead = true;
+    }
     @Override
     public void Movement(){
         if(direction == true){
@@ -19,4 +26,5 @@ public class Alien extends Sprite{
 
     }
     public boolean LoseCheck(){return false;}
+    public boolean GetDead(){return dead;}
 }
