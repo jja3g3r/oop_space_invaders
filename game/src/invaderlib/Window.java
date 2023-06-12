@@ -8,6 +8,7 @@ public class Window extends PApplet {
     private Navy navy;
     private DAKKA dakka;
     private Player player;
+    private Fortress fortress;
 
     private int currentScore = 0;
     public int level = 1;
@@ -18,9 +19,8 @@ public class Window extends PApplet {
     public void setup() {
         navy = new Navy(this);
         dakka = new DAKKA(this);
-        player = new Player(200, 550, 10, 10, this);
-
-        System.out.println("Level: " + level);
+        player = new Player(200, 550, this);
+        fortress = new Fortress(this);
     }
 
     @Override
@@ -68,6 +68,9 @@ public class Window extends PApplet {
         text("Score: " + currentScore, width - 10, 20);
 
         navy.NavalManouvre();
+        for(Sprite c : fortress.table){
+            c.Paint();
+        }
 
         // Draw the navy sprites
         for (int i = 0; i < 56; i++) {
@@ -99,7 +102,7 @@ public class Window extends PApplet {
         image(player.alive1, player.GetXYpos().GetX(), player.GetXYpos().GetY());
 
         // Perform collision control
-        boolean alienRemoved = CollisionControl.Collisionthing(navy, dakka, player);
+        boolean alienRemoved = CollisionControl.Collisionthing(navy, dakka, player, fortress);
 
         // If an alien is removed, increment the score by one
         if (alienRemoved) {
@@ -125,7 +128,7 @@ public class Window extends PApplet {
         // Reset any other necessary game state variables and objects
         navy = new Navy(this);
         dakka = new DAKKA(this);
-        player = new Player(200, 550, 10, 10, this);
+        player = new Player(200, 550, this);
     }
 
 

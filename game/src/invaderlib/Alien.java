@@ -9,21 +9,9 @@ public class Alien extends Sprite {
     private Alien neighboor;
     public static boolean direction;
     private boolean dead, bottom;
-    private int tick, type;
-
-    /**
-     * Constructs an Alien object.
-     * @param newX The initial X position of the alien.
-     * @param newY The initial Y position of the alien.
-     * @param newSX The width of the alien sprite.
-     * @param newSY The height of the alien sprite.
-     * @param newWindow The Window object representing the game window.
-     * @param newType The type of the alien.
-     * @param newNeighboor The neighboring alien.
-     * @param newBottom Determines if the alien is at the bottom row.
-     */
-    Alien(float newX, float newY, float newSX, float newSY, Window newWindow, int newType, Alien newNeighboor, boolean newBottom) {
-        super(newX, newY, newSX, newSY, newWindow);
+    private int tick,type;
+    Alien(float newX, float newY, Window newWindow,int newType, Alien newNeighboor, boolean newBottom){
+        super(newX, newY, newWindow);
         direction = true;
         dead = false;
         tick = 0;
@@ -44,8 +32,8 @@ public class Alien extends Sprite {
                 alive2 = pWindow.loadImage("../pngs/Alien3b.png");
         }
         deadp = pWindow.loadImage("../pngs/Aliendead.png");
-        alive1.resize(30, 17);
-        alive2.resize(30, 17);
+        alive1.resize(32,16);
+        alive2.resize(32,16);
     }
 
     public void Time() {
@@ -59,9 +47,11 @@ public class Alien extends Sprite {
                 if (!neighboor.dead) {
                     neighboor.bottom = true;
                     bottom = false;
-                } else if (!neighboor.neighboor.dead) {
-                    neighboor.neighboor.bottom = true;
-                    bottom = false;
+                }else if(null != neighboor.neighboor){
+                    if(!neighboor.neighboor.dead){
+                        neighboor.neighboor.bottom = true;
+                        bottom = false;
+                    }
                 }
             }
         }
@@ -105,27 +95,6 @@ public class Alien extends Sprite {
         }
     }
 
-    /**
-     * Checks if the alien has reached the player's spaceship.
-     * @return Returns false as aliens cannot reach the player's spaceship.
-     */
-    public boolean LoseCheck() {
-        return false;
-    }
-
-    /**
-     * Retrieves the status of the alien's life.
-     * @return Returns true if the alien is dead, false otherwise.
-     */
-    public boolean GetDead() {
-        return dead;
-    }
-
-    /**
-     * Retrieves the status of the alien's position at the bottom row.
-     * @return Returns true if the alien is at the bottom row, false otherwise.
-     */
-    public boolean GetBottom() {
-        return bottom;
-    }
+    public final boolean GetDead(){return dead;}
+    public final boolean GetBottom(){return bottom;}
 }

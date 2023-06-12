@@ -7,19 +7,10 @@ public class Player extends Sprite {
     public boolean direction;
     private long lastShotTime;
     private final long shootingDelay = 1000; // 1 second delay in milliseconds
-
-    /**
-     * Constructs a Player object.
-     * @param newX The initial x-coordinate of the player.
-     * @param newY The initial y-coordinate of the player.
-     * @param newSX The width of the player.
-     * @param newSY The height of the player.
-     * @param newWindow The Window object representing the game window.
-     */
-    Player(float newX, float newY, float newSX, float newSY, Window newWindow) {
-        super(newX, newY, newSX, newSY, newWindow);
-        alive1 = pWindow.loadImage("../cannon.png");
-        alive1.resize(20, 20);
+    Player(float newX, float newY, Window newWindow){
+        super(newX, newY,newWindow);
+        alive1 = pWindow.loadImage("../pngs/gun.png");
+        alive1.resize(32,16);
     }
 
     public void Time() {
@@ -43,13 +34,8 @@ public class Player extends Sprite {
             this.xypos.SetX(xypos.GetX() - 3);
         }
     }
-
-    public void Paint() {
-    }
-
-    /**
-     * Handles shooting action of the player.
-     */
+    @Override
+    public void Paint(){}
     public void Shooting() {
         long currentTime = System.currentTimeMillis();
         if (currentTime - lastShotTime >= shootingDelay) {
