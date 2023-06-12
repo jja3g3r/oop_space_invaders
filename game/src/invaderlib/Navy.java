@@ -9,11 +9,18 @@ public class Navy extends SpriteTable{
     private Navy Setships() {
         table = new Vector<>();
         int y = 0;
-        for (int i = 0; i < 55; i++) {
-            if (i % 11 == 0) {
-                y++;
-            }
-            table.add(new Alien((i % 11) * 25, 35 * y, 10, 10, pWindow));
+        for(int i = 0; i < 11; i++){
+            table.add(new Alien(i * 30, 35 * y + 50, 10,10,pWindow,0));
+        }
+        y++;
+        for(int i = 0; i < 22; i++){
+            if(i == 11){y++;}
+            table.add(new Alien((i % 11) * 30, 35 * y+ 50, 10,10,pWindow,1));
+        }
+        y++;
+        for(int i = 0; i < 22; i++){
+            if(i == 11){y++;}
+            table.add(new Alien((i % 11) * 30, 35 * y+ 50, 10,10,pWindow,2));
         }
         return this;
     }
@@ -24,7 +31,7 @@ public class Navy extends SpriteTable{
             if (((Alien) table.get(i)).GetDead() == false) {
                 allAliensDead = false; // At least one alien is alive
 
-                if (table.get(i).GetXYpos().GetX() + 16 >= pWindow.GetWidth()) {
+                if (table.get(i).GetXYpos().GetX() + 30 >= pWindow.GetWidth()) {
                     ((Alien) table.get(i)).direction = false;
                     advance = true;
                 } else if (table.get(i).GetXYpos().GetX() <= 0) {

@@ -3,15 +3,23 @@ package invaderlib;
 public class Alien extends Sprite{
     public static boolean direction;
     private boolean dead;
-    private int tick;
-    Alien(float newX, float newY, float newSX, float newSY, Window newWindow){
+    private int tick,type;
+    Alien(float newX, float newY, float newSX, float newSY, Window newWindow,int type){
         super(newX, newY, newSX, newSY, newWindow);
         direction = true;
         dead = false;
         tick = 0;
-        alive1 = pWindow.loadImage("../pngs/Alien1a.png");
+        switch (type){
+            case 0: alive1 = pWindow.loadImage("../pngs/Alien1a.png");
+                    alive2 = pWindow.loadImage("../pngs/Alien1b.png");
+                    break;
+            case 1: alive1 = pWindow.loadImage("../pngs/Alien2a.png");
+                    alive2 = pWindow.loadImage("../pngs/Alien2b.png");
+                    break;
+            case 2: alive1 = pWindow.loadImage("../pngs/Alien3a.png");
+                    alive2 = pWindow.loadImage("../pngs/Alien3b.png");
+        }
         alive1.resize(30,17);
-        alive2 = pWindow.loadImage("../pngs/Alien1b.png");
         alive2.resize(30,17);
     }
     public void Time(){}
