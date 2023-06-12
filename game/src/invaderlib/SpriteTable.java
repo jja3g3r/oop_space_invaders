@@ -2,7 +2,7 @@ package invaderlib;
 
 import java.util.Vector;
 
-public class SpriteTable {
+public abstract class SpriteTable {
     protected Window pWindow;
     protected Vector<Sprite> table;
     SpriteTable(Window newWindow){SetWindow(newWindow);}

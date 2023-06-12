@@ -4,12 +4,9 @@ public class Player extends Sprite{
     public boolean direction;
     Player(float newX, float newY, float newSX, float newSY, Window newWindow){
         super(newX, newY, newSX, newSY,newWindow);
-        placeholder = pWindow.loadImage("../cannon.png");
+        alive1 = pWindow.loadImage("../cannon.png");
     }
-    public void Shooting(Window window){
-        window.GetDakka().AddShoot(xypos,false);
-    }
-    public void GettingHit(){}
+    public void Time(){}
     @Override
     public void Death(){}
     @Override
@@ -20,4 +17,9 @@ public class Player extends Sprite{
             this.xypos.SetX(xypos.GetX() - 3);
         }
     }
+    public void Paint(){}
+    public void Shooting(Window window){
+        window.GetDakka().AddShoot(xypos,false);
+    }
+    public void GettingHit(){}
 }

@@ -5,7 +5,7 @@ import processing.core.PApplet;
 public class Window extends PApplet {
     private Score score;
     private Health health;
-    private int speed, width = 400, height = 600;
+    private int speed, width = 500, height = 600;
     private Navy navy;
     private DAKKA dakka;
     private Player player;
@@ -67,7 +67,7 @@ public class Window extends PApplet {
         for (int i = 0; i < 55; i++) {
             Alien alien = (Alien) navy.table.get(i);
             if (!alien.GetDead()) {
-                image(alien.placeholder, alien.GetXYpos().GetX(), alien.GetXYpos().GetY(), 20, 20);
+                alien.Paint();
 
                 // Check if an alien reaches the player
                 if (alien.GetXYpos().GetY() >= 540) {
@@ -86,11 +86,11 @@ public class Window extends PApplet {
         // Move and draw the dakka sprites
         for (Sprite x : dakka.table) {
             x.Movement();
-            image(x.placeholder, x.GetXYpos().GetX(), x.GetXYpos().GetY(), 20, 20);
+            image(x.alive1, x.GetXYpos().GetX(), x.GetXYpos().GetY());
         }
 
         // Draw the player sprite
-        image(player.placeholder, player.GetXYpos().GetX(), player.GetXYpos().GetY(), 20, 20);
+        image(player.alive1, player.GetXYpos().GetX(), player.GetXYpos().GetY());
 
         // Perform collision control
         boolean alienRemoved = CollisionControl.Collisionthing(navy, dakka, player);
