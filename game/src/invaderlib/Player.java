@@ -3,7 +3,7 @@ package invaderlib;
 public class Player extends Sprite{
     public boolean direction;
     private long lastShotTime;
-    private final long shootingDelay = 0; // 1 second delay in milliseconds
+    private final long shootingDelay = 1000; // 1 second delay in milliseconds
     Player(float newX, float newY, float newSX, float newSY, Window newWindow){
         super(newX, newY, newSX, newSY,newWindow);
         alive1 = pWindow.loadImage("../cannon.png");

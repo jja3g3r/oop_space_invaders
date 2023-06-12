@@ -13,14 +13,7 @@ public class Window extends PApplet {
     private int currentScore = 0;
     public int level = 1;
 
-    public boolean WinCheck() {
-        if (navy.getDeadAlienCount() == navy.table.size()) {
-            level++;
-            System.out.println("Level: " + level);
-            return true;
-        }
-        return false;
-    }
+
 
     @Override
     public void setup() {

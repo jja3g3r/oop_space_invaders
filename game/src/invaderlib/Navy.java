@@ -51,7 +51,7 @@ public class Navy extends SpriteTable{
         boolean allAliensDead = true; // Track if all aliens are dead
         for (int i = 0; i < 55; i++) {
             Alien alien = (Alien) table.get(i);
-            alien.movementSpeed = basespeed+ deadAlien * 0.01f; // Increases movement speed per dead alien
+            alien.movementSpeed = basespeed + pWindow.level * 0.03f + deadAlien * 0.005f; // Increases movement speed per dead alien
             if (!alien.GetDead()) {
                 allAliensDead = false; // At least one alien is alive
 
