@@ -6,8 +6,8 @@ public class Player extends Sprite{
     private final long shootingDelay = 1000; // 1 second delay in milliseconds
     Player(float newX, float newY, Window newWindow){
         super(newX, newY,newWindow);
-        alive1 = pWindow.loadImage("../cannon.png");
-        alive1.resize(20,20);
+        alive1 = pWindow.loadImage("../pngs/gun.png");
+        alive1.resize(32,16);
     }
     public void Time(){}
     @Override

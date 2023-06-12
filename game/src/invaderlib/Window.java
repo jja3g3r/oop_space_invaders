@@ -98,7 +98,7 @@ public class Window extends PApplet {
         image(player.alive1, player.GetXYpos().GetX(), player.GetXYpos().GetY());
 
         // Perform collision control
-        boolean alienRemoved = CollisionControl.Collisionthing(navy, dakka, player);
+        boolean alienRemoved = CollisionControl.Collisionthing(navy, dakka, player, fortress);
 
         // If an alien is removed, increment the score by one
         if (alienRemoved) {

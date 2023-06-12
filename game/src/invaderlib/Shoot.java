@@ -35,8 +35,9 @@ public class Shoot extends Sprite{
             ammo3.resize(6,16);
             ammo4.resize(6,16);
         }else{
-            ammo1 = pWindow.loadImage("../shot.png");
-            ammo1.resize(20,20);
+            ammo1 = pWindow.loadImage("../pngs/ammop.png");
+            ammo1.resize(2,16);
+            xypos.SetX(xypos.GetX()+16);
         }
     }
     public void Time(){}
