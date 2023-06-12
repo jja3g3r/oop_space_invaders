@@ -33,9 +33,11 @@ public class Navy extends SpriteTable {
             a++;
         }
         y++;
-        for(int i = 0; i < 22; i++){
-            if(i == 11){y++;}
-            table.add(new Alien((i % 11) * 32, 35 * y+ 50,pWindow,1, (Alien)table.get(a-11), false));
+        for (int i = 0; i < 22; i++) {
+            if (i == 11) {
+                y++;
+            }
+            table.add(new Alien((i % 11) * 30, 35 * y + 50, 10, 10, pWindow, 1, (Alien) table.get(a - 11), false));
             a++;
         }
         y++;
@@ -43,8 +45,9 @@ public class Navy extends SpriteTable {
         for (int i = 0; i < 22; i++) {
             if (i == 11) {
                 y++;
-                bottom = true;}
-            table.add(new Alien((i % 11) * 32, 35 * y+ 50,pWindow,2,(Alien)table.get(a-11), bottom));
+                bottom = true;
+            }
+            table.add(new Alien((i % 11) * 30, 35 * y + 50, 10, 10, pWindow, 2, (Alien) table.get(a - 11), bottom));
             a++;
         }
 
