@@ -29,8 +29,15 @@ public class Window extends PApplet {
         setSize(width, height);
     }
 
-    @Override
     public void keyPressed() {
+        if (!looping) {
+            if (keyCode == BACKSPACE) {
+                resetGame();
+                loop(); // Restart the game loop
+            }
+            return;
+        }
+
         if (key == 'd') {
             player.direction = true;
             player.Movement();
@@ -58,8 +65,22 @@ public class Window extends PApplet {
 
         // Draw the navy sprites
         for (int i = 0; i < 55; i++) {
-            image(navy.table.get(i).placeholder, navy.table.get(i).GetXYpos().GetX(),
-                    navy.table.get(i).GetXYpos().GetY(), 20, 20);
+            Alien alien = (Alien) navy.table.get(i);
+            if (!alien.GetDead()) {
+                image(alien.placeholder, alien.GetXYpos().GetX(), alien.GetXYpos().GetY(), 20, 20);
+
+                // Check if an alien reaches the player
+                if (alien.GetXYpos().GetY() >= 500) {
+                    // End the game and display the score
+                    textAlign(CENTER);
+                    textSize(32);
+                    fill(255);
+                    text("Game Over", width / 2, height / 2);
+                    text("Score: " + currentScore, width / 2, height / 2 + 40);
+                    text("Press BACKSPACE to restart", width / 2, height / 2 + 80);
+                    noLoop(); // Stop the game loop
+                }
+            }
         }
 
         // Move and draw the dakka sprites
