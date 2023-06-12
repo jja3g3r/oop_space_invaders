@@ -1,37 +1,55 @@
 package invaderlib;
+
 import java.util.Vector;
 
-public class Navy extends SpriteTable{
+/**
+ * Represents a fleet of alien sprites in the game.
+ */
+public class Navy extends SpriteTable {
     float basespeed = 1f;
-    Navy(Window newWindow){
+
+    /**
+     * Constructs a Navy object.
+     * @param newWindow The Window object representing the game window.
+     */
+    Navy(Window newWindow) {
         super(newWindow);
         Setships();
     }
+
     private Navy Setships() {
         table = new Vector<>();
         int a = 0;
         int y = 0;
-        for(int i = 0; i < 11; i++){
-            table.add(new Alien(i * 30, 35 * y + 50, 10,10,pWindow,0, null, false));
+        for (int i = 0; i < 11; i++) {
+            table.add(new Alien(i * 30, 35 * y + 50, 10, 10, pWindow, 0, null, false));
             a++;
         }
         y++;
-        for(int i = 0; i < 22; i++){
-            if(i == 11){y++;}
-            table.add(new Alien((i % 11) * 30, 35 * y+ 50, 10,10,pWindow,1, (Alien)table.get(a-11), false));
+        for (int i = 0; i < 22; i++) {
+            if (i == 11) {
+                y++;
+            }
+            table.add(new Alien((i % 11) * 30, 35 * y + 50, 10, 10, pWindow, 1, (Alien) table.get(a - 11), false));
             a++;
         }
         y++;
         boolean bottom = false;
-        for(int i = 0; i < 22; i++){
-            if(i == 11){
+        for (int i = 0; i < 22; i++) {
+            if (i == 11) {
                 y++;
-                bottom = true;}
-            table.add(new Alien((i % 11) * 30, 35 * y+ 50, 10,10,pWindow,2,(Alien)table.get(a-11), bottom));
+                bottom = true;
+            }
+            table.add(new Alien((i % 11) * 30, 35 * y + 50, 10, 10, pWindow, 2, (Alien) table.get(a - 11), bottom));
             a++;
         }
         return this;
     }
+
+    /**
+     * Retrieves the count of dead aliens in the fleet.
+     * @return The number of dead aliens.
+     */
     public int getDeadAlienCount() {
         int deadCount = 0;
         for (int i = 0; i < table.size(); i++) {
@@ -43,7 +61,9 @@ public class Navy extends SpriteTable{
         return deadCount;
     }
 
-
+    /**
+     * Performs the naval maneuver by updating the movement and shooting actions of the fleet.
+     */
     public void NavalManouvre() {
         int deadAlien = getDeadAlienCount();
 
@@ -66,7 +86,7 @@ public class Navy extends SpriteTable{
         }
         if (allAliensDead) {
             table.clear();
-            pWindow.level++;// Clear the existing alien sprites
+            pWindow.level++; // Clear the existing alien sprites
             Setships(); // Create a new navy
         }
 

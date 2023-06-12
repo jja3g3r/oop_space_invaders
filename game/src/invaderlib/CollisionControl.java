@@ -1,7 +1,18 @@
 package invaderlib;
 
+/**
+ * Controls the collision detection between Navy, DAKKA, and Player objects.
+ */
 public class CollisionControl {
-    public static boolean Collisionthing(Navy navy, DAKKA dakka, Player player){
+
+    /**
+     * Detects and handles collisions between Navy, DAKKA, and Player objects.
+     * @param navy The Navy object representing the fleet of aliens.
+     * @param dakka The DAKKA object representing the collection of shoots.
+     * @param player The Player object representing the player's spaceship.
+     * @return Returns true if an alien is removed due to collision, false otherwise.
+     */
+    public static boolean Collisionthing(Navy navy, DAKKA dakka, Player player) {
         boolean alienRemoved = false;  // Flag to track if an alien is removed
 
         for (int i = navy.table.size() - 1; i >= 0; i--) {
