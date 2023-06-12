@@ -70,7 +70,7 @@ public class Window extends PApplet {
                 image(alien.placeholder, alien.GetXYpos().GetX(), alien.GetXYpos().GetY(), 20, 20);
 
                 // Check if an alien reaches the player
-                if (alien.GetXYpos().GetY() >= 500) {
+                if (alien.GetXYpos().GetY() >= 540) {
                     // End the game and display the score
                     textAlign(CENTER);
                     textSize(32);
