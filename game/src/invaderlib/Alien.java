@@ -98,7 +98,7 @@ public class Alien extends Sprite {
     public void Shooting() {
         if (bottom) {
             Random rand = new Random();
-            int n = rand.nextInt(280);
+            int n = rand.nextInt(400);
             if (n == 0) {
                 pWindow.GetDakka().AddShoot(xypos, true);
             }

@@ -3,8 +3,6 @@ package invaderlib;
 import java.util.Vector;
 
 public class Cover extends Sprite{
-    private Vector<XYpos> collisionMap, destroMap;
-    private Vector<Vector<XYpos>> collisionMapV2;
     private XYpos[][] collisionMapV3;
     Cover(float newX, float newY, Window newWindow){
         super(newX, newY, newWindow);
@@ -43,7 +41,6 @@ public class Cover extends Sprite{
     }
 
     public final XYpos[][] GetCollisionMap(){return this.collisionMapV3;}
-    public final Vector<XYpos> GetDestroMap(){return this.destroMap;}
 
     private void SetCMap(){
         collisionMapV3 = new XYpos[48][32];

@@ -30,17 +30,10 @@ public class CollisionControl {
                 Sprite c = fortress.table.get(j);
                 for(int x = 0; x < 48; x++) {
                     for (int y = 0; y < 32; y++) {
-                        if(d.xypos.GetX() == ((Cover)c).GetCollisionMap()[x][y].GetX() &&
-                                d.xypos.GetY() == ((Cover)c).GetCollisionMap()[x][y].GetY()){
+                        if((int)d.xypos.GetX() == (int)((Cover)c).GetCollisionMap()[x][y].GetX() &&
+                                (int)d.xypos.GetY() == (int)((Cover)c).GetCollisionMap()[x][y].GetY()){
                             ((Cover) c).Death(x, y);
                             d.Death();
-                        }
-                    }
-                }
-                for(XYpos[] pos : ((Cover)c).GetCollisionMap()){
-                    for(XYpos pos2 : pos){
-                        if(d.xypos.GetX() == pos2.GetX() && d.xypos.GetY() == pos2.GetY()){
-                            ((Cover) c).Death((int)pos2.GetX(), (int)pos2.GetY());
                         }
                     }
                 }
