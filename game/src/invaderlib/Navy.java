@@ -2,6 +2,7 @@ package invaderlib;
 import java.util.Vector;
 
 public class Navy extends SpriteTable{
+    float basespeed = 1f;
     Navy(Window newWindow){
         super(newWindow);
         Setships();
@@ -50,7 +51,7 @@ public class Navy extends SpriteTable{
         boolean allAliensDead = true; // Track if all aliens are dead
         for (int i = 0; i < 55; i++) {
             Alien alien = (Alien) table.get(i);
-            alien.movementSpeed = 1+ deadAlien * 0.01f; // Increases movement speed per dead alien
+            alien.movementSpeed = basespeed+ deadAlien * 0.01f; // Increases movement speed per dead alien
             if (!alien.GetDead()) {
                 allAliensDead = false; // At least one alien is alive
 
@@ -64,7 +65,8 @@ public class Navy extends SpriteTable{
             }
         }
         if (allAliensDead) {
-            table.clear(); // Clear the existing alien sprites
+            table.clear();
+            pWindow.level++;// Clear the existing alien sprites
             Setships(); // Create a new navy
         }
 

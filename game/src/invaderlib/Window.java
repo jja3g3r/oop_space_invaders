@@ -10,10 +10,15 @@ public class Window extends PApplet {
     private DAKKA dakka;
     private Player player;
 
-    // New variable to keep track of the score
     private int currentScore = 0;
+    public int level = 1;
 
     public boolean WinCheck() {
+        if (navy.getDeadAlienCount() == navy.table.size()) {
+            level++;
+            System.out.println("Level: " + level);
+            return true;
+        }
         return false;
     }
 
@@ -22,6 +27,8 @@ public class Window extends PApplet {
         navy = new Navy(this);
         dakka = new DAKKA(this);
         player = new Player(200, 550, 10, 10, this);
+
+        System.out.println("Level: " + level);
     }
 
     @Override
@@ -54,8 +61,15 @@ public class Window extends PApplet {
     @Override
     public void draw() {
         background(0);
+        textAlign(LEFT);
+        textSize(16);
+        fill(255);
+        text("Level: " + level, 10, 20);
 
-        // Display the score at the top right corner
+
+
+
+    // Display the score at the top right corner
         textAlign(RIGHT);
         textSize(16);
         fill(255);
@@ -114,15 +128,13 @@ public class Window extends PApplet {
     }
 
     private void resetGame() {
-        // Reset the current score to 0
         currentScore = 0;
-
+        level = 1;
         // Reset any other necessary game state variables and objects
-
-        // Reinitialize the navy, dakka, and player objects
         navy = new Navy(this);
         dakka = new DAKKA(this);
         player = new Player(200, 550, 10, 10, this);
     }
+
 
 }
