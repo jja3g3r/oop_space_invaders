@@ -6,16 +6,10 @@ public class Player extends Sprite{
     private final long shootingDelay = 1000; // 1 second delay in milliseconds
     Player(float newX, float newY, float newSX, float newSY, Window newWindow){
         super(newX, newY, newSX, newSY,newWindow);
-        placeholder = pWindow.loadImage("../cannon.png");
+        alive1 = pWindow.loadImage("../cannon.png");
+        alive1.resize(20,20);
     }
-    public void Shooting(Window window) {
-        long currentTime = System.currentTimeMillis();
-        if (currentTime - lastShotTime >= shootingDelay) {
-            window.GetDakka().AddShoot(xypos, false);
-            lastShotTime = currentTime; // Update last shot time
-        }
-    }
-    public void GettingHit(){}
+    public void Time(){}
     @Override
     public void Death(){}
     @Override
@@ -26,4 +20,13 @@ public class Player extends Sprite{
             this.xypos.SetX(xypos.GetX() - 3);
         }
     }
+    public void Paint(){}
+    public void Shooting(Window window) {
+        long currentTime = System.currentTimeMillis();
+        if (currentTime - lastShotTime >= shootingDelay) {
+            window.GetDakka().AddShoot(xypos, false);
+            lastShotTime = currentTime; // Update last shot time
+        }
+    }
+    public void GettingHit(){}
 }
