@@ -86,7 +86,7 @@ public class Window extends PApplet {
         // Move and draw the dakka sprites
         for (Sprite x : dakka.table) {
             x.Movement();
-            image(x.alive1, x.GetXYpos().GetX(), x.GetXYpos().GetY());
+            x.Paint();
         }
 
         // Draw the player sprite

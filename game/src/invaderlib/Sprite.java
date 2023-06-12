@@ -7,7 +7,7 @@ public abstract class Sprite {
     protected Window pWindow;
     protected XYpos xypos, sprite_position;
     protected Vector<XYpos> collisionMap;
-    public PImage alive1, alive2, dead, ammo1, ammo2, ammo3, ammo4;
+    public PImage alive1, alive2, deadp, ammo1, ammo2, ammo3, ammo4;
     Sprite(float newX, float newY, float newSX, float newSY, Window newWindow){
         SetXYpos(newX, newY).SetSpritePos(newX, newY).SetpWindow(newWindow);
     }
