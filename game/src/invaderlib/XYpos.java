@@ -50,4 +50,10 @@ public class XYpos {
         this.y = newY;
         return this;
     }
+    public void SetPos(XYpos xypos){
+        this.y = xypos.GetY();
+        this.x = xypos.GetX();
+    }
 }
+
+

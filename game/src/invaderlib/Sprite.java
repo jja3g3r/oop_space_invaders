@@ -9,20 +9,17 @@ import invaderlib.XYpos;
  */
 public abstract class Sprite {
     protected Window pWindow;
-    protected XYpos xypos, sprite_position;
-    protected Vector<XYpos> collisionMap;
+    protected XYpos xypos;
     public PImage alive1, alive2, deadp, ammo1, ammo2, ammo3, ammo4;
 
     /**
      * Initializes a new instance of the Sprite class.
      * @param newX The X coordinate of the sprite.
      * @param newY The Y coordinate of the sprite.
-     * @param newSX The X size of the sprite.
-     * @param newSY The Y size of the sprite.
      * @param newWindow The window associated with the sprite.
      */
-    Sprite(float newX, float newY, float newSX, float newSY, Window newWindow) {
-        SetXYpos(newX, newY).SetSpritePos(newX, newY).SetpWindow(newWindow);
+    Sprite(float newX, float newY, Window newWindow) {
+        SetXYpos(newX, newY).SetpWindow(newWindow);
     }
 
     /**
@@ -53,21 +50,8 @@ public abstract class Sprite {
         return this.xypos;
     }
 
-    /**
-     * Gets the collision map of the sprite.
-     * @return The collision map of the sprite.
-     */
-    public final Vector<XYpos> GetCollisionMap() {
-        return this.collisionMap;
-    }
-
     private Sprite SetXYpos(float newX, float newY) {
         this.xypos = new XYpos(newX, newY);
-        return this;
-    }
-
-    private Sprite SetSpritePos(float newX, float newY) {
-        this.sprite_position = new XYpos(newX, newY);
         return this;
     }
 

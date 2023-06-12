@@ -11,18 +11,15 @@ public class Player extends Sprite {
      * Constructs a Player object.
      * @param newX The initial x-coordinate of the player.
      * @param newY The initial y-coordinate of the player.
-     * @param newSX The width of the player.
-     * @param newSY The height of the player.
      * @param newWindow The Window object representing the game window.
      */
-    Player(float newX, float newY, float newSX, float newSY, Window newWindow) {
-        super(newX, newY, newSX, newSY, newWindow);
-        alive1 = pWindow.loadImage("../cannon.png");
-        alive1.resize(20, 20);
+    Player(float newX, float newY, Window newWindow) {
+        super(newX, newY, newWindow);
+        alive1 = pWindow.loadImage("../pngs/gun.png");
+        alive1.resize(32,16);
     }
 
-    public void Time() {
-    }
+    public void Time() {}
 
     @Override
     public void Death() {
@@ -45,9 +42,8 @@ public class Player extends Sprite {
         }
 
     }
-
-    public void Paint() {
-    }
+    @Override
+    public void Paint() {}
 
     /**
      * Handles shooting action of the player.

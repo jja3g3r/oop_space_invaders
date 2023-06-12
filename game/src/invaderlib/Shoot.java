@@ -17,7 +17,7 @@ public class Shoot extends Sprite {
      * @param pWindow The window associated with the shoot.
      */
     public Shoot(float xPos, float yPos, boolean newUPDOWN, Window pWindow) {
-        super(xPos, yPos, xPos, yPos, pWindow);
+        super(xPos, yPos, pWindow);
         updown = newUPDOWN;
         tick = 1;
         if (updown) {
@@ -44,13 +44,14 @@ public class Shoot extends Sprite {
                     break;
             }
             deadp = pWindow.loadImage("../pngs/ammodead.png");
-            ammo1.resize(6, 16);
-            ammo2.resize(6, 16);
-            ammo3.resize(6, 16);
-            ammo4.resize(6, 16);
-        } else {
-            ammo1 = pWindow.loadImage("../shot.png");
-            ammo1.resize(20, 20);
+            ammo1.resize(6,16);
+            ammo2.resize(6,16);
+            ammo3.resize(6,16);
+            ammo4.resize(6,16);
+        }else{
+            ammo1 = pWindow.loadImage("../pngs/ammop.png");
+            ammo1.resize(2,16);
+            xypos.SetX(xypos.GetX()+16);
         }
     }
 
@@ -70,9 +71,9 @@ public class Shoot extends Sprite {
             this.xypos.SetY(xypos.GetY() - 5);
         }
     }
-
-    public void Paint() {
-        if (tick % 40 < 10) {
+    @Override
+    public void Paint(){
+        if(tick % 40 < 10){
             pWindow.image(ammo1, xypos.GetX(), xypos.GetY());
         } else if (tick % 40 < 20) {
             pWindow.image(ammo2, xypos.GetX(), xypos.GetY());
