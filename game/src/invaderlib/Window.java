@@ -9,6 +9,7 @@ public class Window extends PApplet {
     private Navy navy;
     private DAKKA dakka;
     private Player player;
+    private Fortress fortress;
 
     // New variable to keep track of the score
     private int currentScore = 0;
@@ -21,7 +22,8 @@ public class Window extends PApplet {
     public void setup() {
         navy = new Navy(this);
         dakka = new DAKKA(this);
-        player = new Player(200, 550, 10, 10, this);
+        player = new Player(200, 550, this);
+        fortress = new Fortress(this);
     }
 
     @Override
@@ -62,6 +64,9 @@ public class Window extends PApplet {
         text("Score: " + currentScore, width - 10, 20);
 
         navy.NavalManouvre();
+        for(Sprite c : fortress.table){
+            c.Paint();
+        }
 
         // Draw the navy sprites
         for (int i = 0; i < 55; i++) {
@@ -122,7 +127,7 @@ public class Window extends PApplet {
         // Reinitialize the navy, dakka, and player objects
         navy = new Navy(this);
         dakka = new DAKKA(this);
-        player = new Player(200, 550, 10, 10, this);
+        player = new Player(200, 550, this);
     }
 
 }

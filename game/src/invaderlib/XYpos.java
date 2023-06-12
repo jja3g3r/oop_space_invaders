@@ -9,4 +9,8 @@ public class XYpos {
     public final float GetY(){return y;}
     public XYpos SetX(float newX){this.x = newX; return this;}
     public XYpos SetY(float newY){this.y = newY; return this;}
+    public void SetPos(XYpos xypos){
+        this.y = xypos.GetY();
+        this.x = xypos.GetX();
+    }
 }

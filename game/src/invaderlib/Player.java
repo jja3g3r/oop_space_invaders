@@ -4,8 +4,8 @@ public class Player extends Sprite{
     public boolean direction;
     private long lastShotTime;
     private final long shootingDelay = 1000; // 1 second delay in milliseconds
-    Player(float newX, float newY, float newSX, float newSY, Window newWindow){
-        super(newX, newY, newSX, newSY,newWindow);
+    Player(float newX, float newY, Window newWindow){
+        super(newX, newY,newWindow);
         alive1 = pWindow.loadImage("../cannon.png");
         alive1.resize(20,20);
     }
@@ -20,6 +20,7 @@ public class Player extends Sprite{
             this.xypos.SetX(xypos.GetX() - 3);
         }
     }
+    @Override
     public void Paint(){}
     public void Shooting() {
         long currentTime = System.currentTimeMillis();

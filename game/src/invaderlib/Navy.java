@@ -11,13 +11,13 @@ public class Navy extends SpriteTable{
         int a = 0;
         int y = 0;
         for(int i = 0; i < 11; i++){
-            table.add(new Alien(i * 30, 35 * y + 50, 10,10,pWindow,0, null, false));
+            table.add(new Alien(i * 32, 35 * y + 50,pWindow,0, null, false));
             a++;
         }
         y++;
         for(int i = 0; i < 22; i++){
             if(i == 11){y++;}
-            table.add(new Alien((i % 11) * 30, 35 * y+ 50, 10,10,pWindow,1, (Alien)table.get(a-11), false));
+            table.add(new Alien((i % 11) * 32, 35 * y+ 50,pWindow,1, (Alien)table.get(a-11), false));
             a++;
         }
         y++;
@@ -26,7 +26,7 @@ public class Navy extends SpriteTable{
             if(i == 11){
                 y++;
                 bottom = true;}
-            table.add(new Alien((i % 11) * 30, 35 * y+ 50, 10,10,pWindow,2,(Alien)table.get(a-11), bottom));
+            table.add(new Alien((i % 11) * 32, 35 * y+ 50,pWindow,2,(Alien)table.get(a-11), bottom));
             a++;
         }
         return this;
@@ -38,7 +38,7 @@ public class Navy extends SpriteTable{
             if (((Alien) table.get(i)).GetDead() == false) {
                 allAliensDead = false; // At least one alien is alive
 
-                if (table.get(i).GetXYpos().GetX() + 30 >= pWindow.GetWidth()) {
+                if (table.get(i).GetXYpos().GetX() + 32 >= pWindow.GetWidth()) {
                     ((Alien) table.get(i)).direction = false;
                     advance = true;
                 } else if (table.get(i).GetXYpos().GetX() <= 0) {

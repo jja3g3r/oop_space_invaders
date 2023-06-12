@@ -6,7 +6,7 @@ public class Shoot extends Sprite{
     private boolean updown;
     private int tick;
     public Shoot(float xPos, float yPos, boolean newUPDOWN,Window pWindow){
-        super(xPos, yPos, xPos, yPos, pWindow);
+        super(xPos, yPos, pWindow);
         updown = newUPDOWN;
         tick = 1;
         if(updown){
@@ -53,6 +53,7 @@ public class Shoot extends Sprite{
             this.xypos.SetY(xypos.GetY() - 5);
         }
     }
+    @Override
     public void Paint(){
         if(tick % 40 < 10){
             pWindow.image(ammo1, xypos.GetX(), xypos.GetY());
