@@ -31,11 +31,26 @@ public class Navy extends SpriteTable{
         }
         return this;
     }
+    public int getDeadAlienCount() {
+        int deadCount = 0;
+        for (int i = 0; i < table.size(); i++) {
+            Alien alien = (Alien) table.get(i);
+            if (alien.GetDead()) {
+                deadCount++;
+            }
+        }
+        return deadCount;
+    }
+
+
     public void NavalManouvre() {
+        int deadAlien = getDeadAlienCount();
+
         boolean advance = false;
         boolean allAliensDead = true; // Track if all aliens are dead
         for (int i = 0; i < 55; i++) {
             Alien alien = (Alien) table.get(i);
+            alien.movementSpeed = 1+ deadAlien * 0.01f; // Increases movement speed per dead alien
             if (!alien.GetDead()) {
                 allAliensDead = false; // At least one alien is alive
 
@@ -57,7 +72,6 @@ public class Navy extends SpriteTable{
             // Increase movement speed of all aliens by 0.05
             for (int i = 0; i < 55; i++) {
                 Alien alien = (Alien) table.get(i);
-                alien.movementSpeed += 0.05f;
                 alien.GetXYpos().SetY(alien.GetXYpos().GetY() + 10);
             }
         }
