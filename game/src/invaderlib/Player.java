@@ -1,5 +1,4 @@
 package invaderlib;
-
 /**
  * Represents the player sprite in the game.
  */
@@ -27,6 +26,7 @@ public class Player extends Sprite {
 
     @Override
     public void Death() {
+        pWindow.Death();
     }
     /**
      * Updates the movement of the player based on the direction.
@@ -41,7 +41,9 @@ public class Player extends Sprite {
             this.xypos.SetX(xypos.GetX() + 3);
         } else if (direction == false && xypos.GetX() >= 0) {
             this.xypos.SetX(xypos.GetX() - 3);
+
         }
+
     }
 
     public void Paint() {

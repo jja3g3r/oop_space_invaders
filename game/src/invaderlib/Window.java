@@ -50,6 +50,17 @@ public class Window extends PApplet {
         }
     }
 
+    public void Death() {
+        // End the game and display the score
+        textAlign(CENTER);
+        textSize(32);
+        fill(255);
+        text("Game Over", width / 2, height / 2);
+        text("Score: " + currentScore, width / 2, height / 2 + 40);
+        text("Press BACKSPACE to restart", width / 2, height / 2 + 80);
+        noLoop(); // Stop the game loop
+    }
+
     @Override
     public void draw() {
         background(0);
@@ -57,6 +68,7 @@ public class Window extends PApplet {
         textSize(16);
         fill(255);
         text("Level: " + level, 10, 20);
+
 
 
 
@@ -77,14 +89,7 @@ public class Window extends PApplet {
 
                 // Check if an alien reaches the player
                 if (alien.GetXYpos().GetY() >= 540) {
-                    // End the game and display the score
-                    textAlign(CENTER);
-                    textSize(32);
-                    fill(255);
-                    text("Game Over", width / 2, height / 2);
-                    text("Score: " + currentScore, width / 2, height / 2 + 40);
-                    text("Press BACKSPACE to restart", width / 2, height / 2 + 80);
-                    noLoop(); // Stop the game loop
+                    Death();
                 }
             }
         }
