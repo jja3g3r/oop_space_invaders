@@ -23,13 +23,13 @@ public class Navy extends SpriteTable {
         int y = 0;
 
         // Add a UFO on top of the navy fleet
-        table.add(new UFO(5 * 30, 35 * y + 10, 10, 10, pWindow, 0, null, false));
+        table.add(new UFO(5 * 30, 35 * y + 10,  pWindow, 0, null, false));
 
         y++; // Adjust the starting height
 
         // Add regular aliens to the fleet
         for (int i = 0; i < 11; i++) {
-            table.add(new Alien(i * 30, 35 * y + 50, 10, 10, pWindow, 0, null, false));
+            table.add(new Alien(i * 32, 35 * y + 50,pWindow,0, null, false));
             a++;
         }
         y++;
@@ -37,7 +37,7 @@ public class Navy extends SpriteTable {
             if (i == 11) {
                 y++;
             }
-            table.add(new Alien((i % 11) * 30, 35 * y + 50, 10, 10, pWindow, 1, (Alien) table.get(a - 11), false));
+            table.add(new Alien((i % 11) * 32, 35 * y+ 50,pWindow,1, (Alien)table.get(a-11), false));
             a++;
         }
         y++;
@@ -47,12 +47,12 @@ public class Navy extends SpriteTable {
                 y++;
                 bottom = true;
             }
-            table.add(new Alien((i % 11) * 30, 35 * y + 50, 10, 10, pWindow, 2, (Alien) table.get(a - 11), bottom));
+            table.add(new Alien((i % 11) * 32, 35 * y+ 50,pWindow,2,(Alien)table.get(a-11), bottom));
             a++;
         }
 
         // Add the missing alien in the bottom right position
-        table.add(new Alien(11 * 30, 35 * y + 50, 10, 10, pWindow, 2, (Alien) table.get(a - 11), true));
+        //table.add(new Alien(11 * 30, 35 * y + 50, 10, 10, pWindow, 2, (Alien) table.get(a - 11), true));
 
         return this;
     }

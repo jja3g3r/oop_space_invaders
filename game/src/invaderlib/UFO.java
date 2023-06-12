@@ -7,6 +7,20 @@ import java.util.Random;
  */
 public class UFO extends Alien {
     /**
+     * Constructs an Alien object.
+     *
+     * @param newX         The initial X position of the alien.
+     * @param newY         The initial Y position of the alien.
+     * @param newWindow    The Window object representing the game window.
+     * @param newType      The type of the alien.
+     * @param newNeighboor The neighboring alien.
+     * @param newBottom    Determines if the alien is at the bottom row.
+     */
+    UFO(float newX, float newY, Window newWindow, int newType, Alien newNeighboor, boolean newBottom) {
+        super(newX, newY, newWindow, newType, newNeighboor, newBottom);
+    }
+
+    /**
      * Constructs a UFO object.
      * @param newX The initial X position of the UFO.
      * @param newY The initial Y position of the UFO.
@@ -17,9 +31,7 @@ public class UFO extends Alien {
      * @param newNeighboor The neighboring UFO.
      * @param newBottom Determines if the UFO is at the bottom row.
      */
-    public UFO(float newX, float newY, float newSX, float newSY, Window newWindow, int newType, Alien newNeighboor, boolean newBottom) {
-        super(newX, newY, newSX, newSY, newWindow, newType, newNeighboor, newBottom);
-    }
+
 
     @Override
     public void Paint() {
