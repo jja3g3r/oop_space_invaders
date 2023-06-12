@@ -16,8 +16,8 @@ public abstract class Sprite {
     public abstract void Movement();
     public abstract void Paint();
 
-    public XYpos GetXYpos(){return this.xypos;}
-    public Vector<XYpos> GetCollisionMap(){return this.collisionMap;}
+    public final XYpos GetXYpos(){return this.xypos;}
+    public final Vector<XYpos> GetCollisionMap(){return this.collisionMap;}
 
     private Sprite SetXYpos(float newX, float newY){this.xypos = new XYpos(newX,newY); return this;}
     private Sprite SetSpritePos(float newX, float newY){this.sprite_position = new XYpos(newX, newY); return this;}

@@ -7,8 +7,12 @@ public class DAKKA extends SpriteTable{
         super(newWindow);
         SetTable();
     }
-    public void AddShoot(XYpos xypos, boolean updown){
-        table.add(new Shoot(xypos,xypos,updown,pWindow));
+    public void AddShoot(XYpos xypos, boolean updown) {
+        if (updown) {
+            table.add(new Shoot(xypos.GetX()+15, xypos.GetY()+19, updown,pWindow));
+        } else {
+            table.add(new Shoot(xypos.GetX(), xypos.GetY()-1, updown, pWindow));
+        }
     }
     private DAKKA SetTable(){
         table = new Vector<>();

@@ -8,19 +8,26 @@ public class Navy extends SpriteTable{
     }
     private Navy Setships() {
         table = new Vector<>();
+        int a = 0;
         int y = 0;
         for(int i = 0; i < 11; i++){
-            table.add(new Alien(i * 30, 35 * y + 50, 10,10,pWindow,0));
+            table.add(new Alien(i * 30, 35 * y + 50, 10,10,pWindow,0, null, false));
+            a++;
         }
         y++;
         for(int i = 0; i < 22; i++){
             if(i == 11){y++;}
-            table.add(new Alien((i % 11) * 30, 35 * y+ 50, 10,10,pWindow,1));
+            table.add(new Alien((i % 11) * 30, 35 * y+ 50, 10,10,pWindow,1, (Alien)table.get(a-11), false));
+            a++;
         }
         y++;
+        boolean bottom = false;
         for(int i = 0; i < 22; i++){
-            if(i == 11){y++;}
-            table.add(new Alien((i % 11) * 30, 35 * y+ 50, 10,10,pWindow,2));
+            if(i == 11){
+                y++;
+                bottom = true;}
+            table.add(new Alien((i % 11) * 30, 35 * y+ 50, 10,10,pWindow,2,(Alien)table.get(a-11), bottom));
+            a++;
         }
         return this;
     }
@@ -49,6 +56,7 @@ public class Navy extends SpriteTable{
                 table.get(i).GetXYpos().SetY(table.get(i).GetXYpos().GetY() + 10);
             }
             table.get(i).Movement();
+            ((Alien) table.get(i)).Shooting();
         }
     }
 }

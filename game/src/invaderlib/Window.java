@@ -45,7 +45,7 @@ public class Window extends PApplet {
             player.direction = false;
             player.Movement();
         } else if (key == 'w') {
-            player.Shooting(this);
+            player.Shooting();
         } else if (keyCode == BACKSPACE) {
             resetGame();
         }

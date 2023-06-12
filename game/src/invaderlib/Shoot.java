@@ -5,8 +5,8 @@ import java.util.Random;
 public class Shoot extends Sprite{
     private boolean updown;
     private int tick;
-    public Shoot(XYpos xypos, XYpos sxypos, boolean newUPDOWN,Window pWindow){
-        super(xypos.GetX(), xypos.GetY(), sxypos.GetX(), sxypos.GetY(), pWindow);
+    public Shoot(float xPos, float yPos, boolean newUPDOWN,Window pWindow){
+        super(xPos, yPos, xPos, yPos, pWindow);
         updown = newUPDOWN;
         tick = 1;
         if(updown){
@@ -30,7 +30,10 @@ public class Shoot extends Sprite{
                         break;
             }
             deadp = pWindow.loadImage("../pngs/ammodead.png");
-
+            ammo1.resize(6,16);
+            ammo2.resize(6,16);
+            ammo3.resize(6,16);
+            ammo4.resize(6,16);
         }else{
             ammo1 = pWindow.loadImage("../shot.png");
             ammo1.resize(20,20);

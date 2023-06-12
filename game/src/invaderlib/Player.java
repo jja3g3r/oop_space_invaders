@@ -21,10 +21,10 @@ public class Player extends Sprite{
         }
     }
     public void Paint(){}
-    public void Shooting(Window window) {
+    public void Shooting() {
         long currentTime = System.currentTimeMillis();
         if (currentTime - lastShotTime >= shootingDelay) {
-            window.GetDakka().AddShoot(xypos, false);
+            pWindow.GetDakka().AddShoot(xypos, false);
             lastShotTime = currentTime; // Update last shot time
         }
     }
