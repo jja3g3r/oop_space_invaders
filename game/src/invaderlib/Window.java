@@ -29,9 +29,15 @@ public class Window extends PApplet {
         setSize(width, height);
     }
 
-
-    @Override
     public void keyPressed() {
+        if (!looping) {
+            if (keyCode == BACKSPACE) {
+                resetGame();
+                loop(); // Restart the game loop
+            }
+            return;
+        }
+
         if (key == 'd') {
             player.direction = true;
             player.Movement();
@@ -41,7 +47,6 @@ public class Window extends PApplet {
         } else if (key == 'w') {
             player.Shooting(this);
         } else if (keyCode == BACKSPACE) {
-            // Reset the game
             resetGame();
         }
     }
@@ -80,8 +85,22 @@ public class Window extends PApplet {
 
         // Draw the navy sprites
         for (int i = 0; i < 55; i++) {
-            image(navy.table.get(i).placeholder, navy.table.get(i).GetXYpos().GetX(),
-                    navy.table.get(i).GetXYpos().GetY(), 20, 20);
+            Alien alien = (Alien) navy.table.get(i);
+            if (!alien.GetDead()) {
+                image(alien.placeholder, alien.GetXYpos().GetX(), alien.GetXYpos().GetY(), 20, 20);
+
+                // Check if an alien reaches the player
+                if (alien.GetXYpos().GetY() >= 540) {
+                    // End the game and display the score
+                    textAlign(CENTER);
+                    textSize(32);
+                    fill(255);
+                    text("Game Over", width / 2, height / 2);
+                    text("Score: " + currentScore, width / 2, height / 2 + 40);
+                    text("Press BACKSPACE to restart", width / 2, height / 2 + 80);
+                    noLoop(); // Stop the game loop
+                }
+            }
         }
 
         // Move and draw the dakka sprites
@@ -113,17 +132,17 @@ public class Window extends PApplet {
     public DAKKA GetDakka() {
         return this.dakka;
     }
+
     private void resetGame() {
-        // Reset the score
+        // Reset the current score to 0
         currentScore = 0;
 
-        // Clear all objects
-        navy.table.clear();
-        dakka.table.clear();
+        // Reset any other necessary game state variables and objects
 
-        // Create new instances of navy, dakka, and player
+        // Reinitialize the navy, dakka, and player objects
         navy = new Navy(this);
         dakka = new DAKKA(this);
         player = new Player(200, 550, 10, 10, this);
     }
+
 }
