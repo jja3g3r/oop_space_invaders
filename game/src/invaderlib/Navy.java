@@ -22,8 +22,14 @@ public class Navy extends SpriteTable {
         int a = 0;
         int y = 0;
 
-        for(int i = 0; i < 11; i++){
-            table.add(new Alien(i * 32, 35 * y + 50,pWindow,0, null, false));
+        // Add a UFO on top of the navy fleet
+        table.add(new UFO(5 * 30, 35 * y + 10, 10, 10, pWindow, 0, null, false));
+
+        y++; // Adjust the starting height
+
+        // Add regular aliens to the fleet
+        for (int i = 0; i < 11; i++) {
+            table.add(new Alien(i * 30, 35 * y + 50, 10, 10, pWindow, 0, null, false));
             a++;
         }
         y++;
@@ -41,66 +47,83 @@ public class Navy extends SpriteTable {
             table.add(new Alien((i % 11) * 32, 35 * y+ 50,pWindow,2,(Alien)table.get(a-11), bottom));
             a++;
         }
+
+        // Add the missing alien in the bottom right position
+        table.add(new Alien(11 * 30, 35 * y + 50, 10, 10, pWindow, 2, (Alien) table.get(a - 11), true));
+
         return this;
     }
 
-    /**
-     * Retrieves the count of dead aliens in the fleet.
-     * @return The number of dead aliens.
-     */
     public int getDeadAlienCount() {
         int deadCount = 0;
         for (int i = 0; i < table.size(); i++) {
-            Alien alien = (Alien) table.get(i);
-            if (alien.GetDead()) {
-                deadCount++;
+            Sprite sprite = table.get(i);
+            if (sprite instanceof Alien) {
+                Alien alien = (Alien) sprite;
+                if (alien.GetDead()) {
+                    deadCount++;
+                }
             }
         }
         return deadCount;
     }
 
-    /**
-     * Performs the naval maneuver by updating the movement and shooting actions of the fleet.
-     */
     public void NavalManouvre() {
         int deadAlien = getDeadAlienCount();
 
         boolean advance = false;
-        boolean allAliensDead = true; // Track if all aliens are dead
-        for (int i = 0; i < 55; i++) {
-            Alien alien = (Alien) table.get(i);
-            alien.movementSpeed = basespeed + pWindow.level * 0.03f + deadAlien * 0.005f; // Increases movement speed per dead alien
-            if (!alien.GetDead()) {
-                allAliensDead = false; // At least one alien is alive
+        boolean allAliensDead = true;
 
-                if (alien.GetXYpos().GetX() + 32 >= pWindow.GetWidth()) {
-                    alien.direction = false;
-                    advance = true;
-                } else if (alien.GetXYpos().GetX() <= 0) {
-                    alien.direction = true;
-                    advance = true;
+        // Adjust the loop limit to iterate over the entire vector
+        for (int i = 0; i < table.size(); i++) {
+            Sprite sprite = table.get(i);
+            if (sprite instanceof Alien) {
+                Alien alien = (Alien) sprite;
+                alien.movementSpeed = basespeed + pWindow.level * 0.03f + deadAlien * 0.005f;
+
+                if (!alien.GetDead()) {
+                    allAliensDead = false;
+
+                    if (alien.GetXYpos().GetX() + 30 >= pWindow.GetWidth()) {
+                        alien.direction = false;
+                        advance = true;
+                    } else if (alien.GetXYpos().GetX() <= 0) {
+                        alien.direction = true;
+                        advance = true;
+                    }
                 }
+            } else if (sprite instanceof UFO) {
+                UFO ufo = (UFO) sprite;
+                // Update the movement speed of the UFO (if needed)
+                // Adjust the movement logic for the UFO
+
+                // ... Rest of the UFO movement logic
             }
         }
+
         if (allAliensDead) {
             table.clear();
-            pWindow.level++; // Clear the existing alien sprites
-            Setships(); // Create a new navy
+            pWindow.level++;
+            Setships();
         }
 
         if (advance) {
-            // Increase movement speed of all aliens by 0.05
-            for (int i = 0; i < 55; i++) {
-                Alien alien = (Alien) table.get(i);
-                alien.GetXYpos().SetY(alien.GetXYpos().GetY() + 10);
+            for (int i = 0; i < table.size(); i++) {
+                Sprite sprite = table.get(i);
+                if (sprite instanceof Alien) {
+                    Alien alien = (Alien) sprite;
+                    alien.GetXYpos().SetY(alien.GetXYpos().GetY() + 10);
+                }
             }
         }
 
-        for (int i = 0; i < 55; i++) {
-            Alien alien = (Alien) table.get(i);
-            alien.Movement();
-            alien.Shooting();
+        for (int i = 0; i < table.size(); i++) {
+            Sprite sprite = table.get(i);
+            if (sprite instanceof Alien) {
+                Alien alien = (Alien) sprite;
+                alien.Movement();
+                alien.Shooting();
+            }
         }
     }
-
 }

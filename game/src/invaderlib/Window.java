@@ -86,7 +86,7 @@ public class Window extends PApplet {
         }
 
         // Draw the navy sprites
-        for (int i = 0; i < 55; i++) {
+        for (int i = 0; i < 56; i++) {
             Alien alien = (Alien) navy.table.get(i);
             if (!alien.GetDead()) {
                 alien.Paint();
