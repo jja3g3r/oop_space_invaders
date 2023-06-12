@@ -35,14 +35,15 @@ public class Navy extends SpriteTable{
         boolean advance = false;
         boolean allAliensDead = true; // Track if all aliens are dead
         for (int i = 0; i < 55; i++) {
-            if (((Alien) table.get(i)).GetDead() == false) {
+            Alien alien = (Alien) table.get(i);
+            if (!alien.GetDead()) {
                 allAliensDead = false; // At least one alien is alive
 
-                if (table.get(i).GetXYpos().GetX() + 30 >= pWindow.GetWidth()) {
-                    ((Alien) table.get(i)).direction = false;
+                if (alien.GetXYpos().GetX() + 30 >= pWindow.GetWidth()) {
+                    alien.direction = false;
                     advance = true;
-                } else if (table.get(i).GetXYpos().GetX() <= 0) {
-                    ((Alien) table.get(i)).direction = true;
+                } else if (alien.GetXYpos().GetX() <= 0) {
+                    alien.direction = true;
                     advance = true;
                 }
             }
@@ -51,12 +52,21 @@ public class Navy extends SpriteTable{
             table.clear(); // Clear the existing alien sprites
             Setships(); // Create a new navy
         }
-        for (int i = 0; i < 55; i++) {
-            if (advance == true) {
-                table.get(i).GetXYpos().SetY(table.get(i).GetXYpos().GetY() + 10);
+
+        if (advance) {
+            // Increase movement speed of all aliens by 0.05
+            for (int i = 0; i < 55; i++) {
+                Alien alien = (Alien) table.get(i);
+                alien.movementSpeed += 0.05f;
+                alien.GetXYpos().SetY(alien.GetXYpos().GetY() + 10);
             }
-            table.get(i).Movement();
-            ((Alien) table.get(i)).Shooting();
+        }
+
+        for (int i = 0; i < 55; i++) {
+            Alien alien = (Alien) table.get(i);
+            alien.Movement();
+            alien.Shooting();
         }
     }
+
 }

@@ -46,14 +46,17 @@ public class Alien extends Sprite{
         xypos.SetY(20000);
         dead = true;
     }
+    public float movementSpeed = 1.0f;
     @Override
-    public void Movement(){
-        if(direction == true){
-            this.xypos.SetX(xypos.GetX() + 1);
-        }else if(direction == false){
-            this.xypos.SetX(xypos.GetX() - 1);
+    public void Movement() {
+        ; // Calculate the updated movement speed
+        if (direction == true) {
+            this.xypos.SetX(xypos.GetX() + movementSpeed);
+        } else if (direction == false) {
+            this.xypos.SetX(xypos.GetX() - movementSpeed);
         }
     }
+
     @Override
     public void Paint(){
         if(tick % 40 < 20){
