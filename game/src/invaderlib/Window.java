@@ -51,29 +51,9 @@ public class Window extends PApplet {
         }
     }
 
-
-
     @Override
     public void draw() {
         background(0);
-
-        // Check if the first row of the navy has reached the player's height
-        if (navy.table.get(0).GetXYpos().GetY() >= 500) {
-            // Clear all objects
-            navy.table.clear();
-            dakka.table.clear();
-
-            // Display the score and restart text
-            textAlign(CENTER);
-            textSize(32);
-            fill(255);
-            text("Score: " + currentScore, width / 2, height / 2);
-            textSize(24);
-            text("Press BACKSPACE to restart", width / 2, height / 2 + 50);
-
-            // Stop further execution of the draw method
-            return;
-        }
 
         // Display the score at the top right corner
         textAlign(RIGHT);
@@ -90,7 +70,7 @@ public class Window extends PApplet {
                 image(alien.placeholder, alien.GetXYpos().GetX(), alien.GetXYpos().GetY(), 20, 20);
 
                 // Check if an alien reaches the player
-                if (alien.GetXYpos().GetY() >= 500) {
+                if (alien.GetXYpos().GetY() >= 540) {
                     // End the game and display the score
                     textAlign(CENTER);
                     textSize(32);
