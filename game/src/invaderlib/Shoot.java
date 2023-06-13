@@ -76,9 +76,9 @@ public class Shoot extends Sprite {
     @Override
     public void Movement() {
         if (updown) {
-            this.xypos.SetY(xypos.GetY() + 5);
+            this.xypos.SetY(xypos.GetY() + 2);
         } else if (!updown) {
-            this.xypos.SetY(xypos.GetY() - 5);
+            this.xypos.SetY(xypos.GetY() - 6);
         }
     }
 
