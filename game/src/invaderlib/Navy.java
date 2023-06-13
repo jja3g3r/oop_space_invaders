@@ -10,6 +10,7 @@ public class Navy extends SpriteTable {
 
     /**
      * Constructs a Navy object.
+     *
      * @param newWindow The Window object representing the game window.
      */
     Navy(Window newWindow) {
@@ -23,13 +24,13 @@ public class Navy extends SpriteTable {
         int y = 0;
 
         // Add a UFO on top of the navy fleet
-        table.add(new UFO(5 * 30, 35 * y + 10,  pWindow, 0, null, false));
+        table.add(new UFO(5 * 30, 35 * y + 10, pWindow, 0, null, false));
 
         y++; // Adjust the starting height
 
         // Add regular aliens to the fleet
         for (int i = 0; i < 11; i++) {
-            table.add(new Alien(i * 32, 35 * y + 50,pWindow,0, null, false));
+            table.add(new Alien(i * 32, 35 * y + 50, pWindow, 0, null, false));
             a++;
         }
         y++;
@@ -37,7 +38,7 @@ public class Navy extends SpriteTable {
             if (i == 11) {
                 y++;
             }
-            table.add(new Alien((i % 11) * 32, 35 * y+ 50,pWindow,1, (Alien)table.get(a-11), false));
+            table.add(new Alien((i % 11) * 32, 35 * y + 50, pWindow, 1, (Alien) table.get(a - 11), false));
             a++;
         }
         y++;
@@ -47,7 +48,7 @@ public class Navy extends SpriteTable {
                 y++;
                 bottom = true;
             }
-            table.add(new Alien((i % 11) * 32, 35 * y+ 50,pWindow,2,(Alien)table.get(a-11), bottom));
+            table.add(new Alien((i % 11) * 32, 35 * y + 50, pWindow, 2, (Alien) table.get(a - 11), bottom));
             a++;
         }
 
@@ -57,6 +58,11 @@ public class Navy extends SpriteTable {
         return this;
     }
 
+    /**
+     * Retrieves the count of dead aliens in the navy fleet.
+     *
+     * @return The count of dead aliens.
+     */
     public int getDeadAlienCount() {
         int deadCount = 0;
         for (int i = 0; i < table.size(); i++) {
@@ -71,6 +77,9 @@ public class Navy extends SpriteTable {
         return deadCount;
     }
 
+    /**
+     * Executes the naval maneuver logic for the navy fleet.
+     */
     public void NavalManouvre() {
         int deadAlien = getDeadAlienCount();
 

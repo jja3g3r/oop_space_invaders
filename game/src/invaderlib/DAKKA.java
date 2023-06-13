@@ -7,6 +7,11 @@ import java.util.Vector;
  * "DAKKA" is an onomatopoeic term in the Warhammer 40K universe that represents the sound of rapid and intense gunfire.
  */
 public class DAKKA extends SpriteTable {
+    /**
+     * Constructs a DAKKA object.
+     *
+     * @param newWindow The Window object representing the game window.
+     */
     DAKKA(Window newWindow) {
         super(newWindow);
         SetTable();
@@ -14,12 +19,13 @@ public class DAKKA extends SpriteTable {
 
     /**
      * Adds a shoot to the DAKKA collection.
-     * @param xypos The XY position of the shoot.
-     * @param updown Determines if the shoot moves up or down.
+     *
+     * @param xypos   The XY position of the shoot.
+     * @param updown  Determines if the shoot moves up or down.
      */
     public void AddShoot(XYpos xypos, boolean updown) {
         if (updown) {
-            table.add(new Shoot(xypos.GetX()+15, xypos.GetY()+21, updown,pWindow));
+            table.add(new Shoot(xypos.GetX() + 15, xypos.GetY() + 21, updown, pWindow));
         } else {
             table.add(new Shoot(xypos.GetX(), xypos.GetY() - 1, updown, pWindow));
         }

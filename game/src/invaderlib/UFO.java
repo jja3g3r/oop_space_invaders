@@ -24,8 +24,6 @@ public class UFO extends Alien {
      * Constructs a UFO object.
      * @param newX The initial X position of the UFO.
      * @param newY The initial Y position of the UFO.
-     * @param newSX The width of the UFO sprite.
-     * @param newSY The height of the UFO sprite.
      * @param newWindow The Window object representing the game window.
      * @param newType The type of the UFO.
      * @param newNeighboor The neighboring UFO.

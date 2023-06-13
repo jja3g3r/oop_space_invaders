@@ -11,10 +11,11 @@ public class Shoot extends Sprite {
 
     /**
      * Initializes a new instance of the Shoot class.
-     * @param xPos The X position of the shoot.
-     * @param yPos The Y position of the shoot.
+     *
+     * @param xPos     The X position of the shoot.
+     * @param yPos     The Y position of the shoot.
      * @param newUPDOWN Determines if the shoot moves up or down.
-     * @param pWindow The window associated with the shoot.
+     * @param pWindow  The window associated with the shoot.
      */
     public Shoot(float xPos, float yPos, boolean newUPDOWN, Window pWindow) {
         super(xPos, yPos, pWindow);
@@ -44,18 +45,22 @@ public class Shoot extends Sprite {
                     break;
             }
             deadp = pWindow.loadImage("../pngs/ammodead.png");
-            ammo1.resize(6,16);
-            ammo2.resize(6,16);
-            ammo3.resize(6,16);
-            ammo4.resize(6,16);
-        }else{
+            ammo1.resize(6, 16);
+            ammo2.resize(6, 16);
+            ammo3.resize(6, 16);
+            ammo4.resize(6, 16);
+        } else {
             ammo1 = pWindow.loadImage("../pngs/ammop.png");
-            ammo1.resize(2,16);
-            xypos.SetX(xypos.GetX()+16);
+            ammo1.resize(2, 16);
+            xypos.SetX(xypos.GetX() + 16);
         }
     }
 
-    public void Time() {}
+    /**
+     * Empty method for handling time-related logic.
+     */
+    public void Time() {
+    }
 
     @Override
     public void Death() {
@@ -63,6 +68,11 @@ public class Shoot extends Sprite {
         xypos.SetY(20000);
     }
 
+    /**
+     * Updates the movement of the shoot based on its direction.
+     * If the shoot moves up, its Y position is increased by 5 units.
+     * If the shoot moves down, its Y position is decreased by 5 units.
+     */
     @Override
     public void Movement() {
         if (updown) {
@@ -71,9 +81,10 @@ public class Shoot extends Sprite {
             this.xypos.SetY(xypos.GetY() - 5);
         }
     }
+
     @Override
-    public void Paint(){
-        if(tick % 40 < 10){
+    public void Paint() {
+        if (tick % 40 < 10) {
             pWindow.image(ammo1, xypos.GetX(), xypos.GetY());
         } else if (tick % 40 < 20) {
             pWindow.image(ammo2, xypos.GetX(), xypos.GetY());

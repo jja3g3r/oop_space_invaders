@@ -1,4 +1,5 @@
 package invaderlib;
+
 /**
  * Represents the player sprite in the game.
  */
@@ -9,22 +10,28 @@ public class Player extends Sprite {
 
     /**
      * Constructs a Player object.
-     * @param newX The initial x-coordinate of the player.
-     * @param newY The initial y-coordinate of the player.
+     *
+     * @param newX      The initial x-coordinate of the player.
+     * @param newY      The initial y-coordinate of the player.
      * @param newWindow The Window object representing the game window.
      */
     Player(float newX, float newY, Window newWindow) {
         super(newX, newY, newWindow);
         alive1 = pWindow.loadImage("../pngs/gun.png");
-        alive1.resize(32,16);
+        alive1.resize(32, 16);
     }
 
-    public void Time() {}
+    /**
+     * Empty method for handling time-related logic.
+     */
+    public void Time() {
+    }
 
     @Override
     public void Death() {
         pWindow.Death();
     }
+
     /**
      * Updates the movement of the player based on the direction.
      * If the direction is true and the player's x-coordinate is within the game window's width minus 17,
@@ -34,19 +41,21 @@ public class Player extends Sprite {
      */
     @Override
     public void Movement() {
-        if (direction == true && xypos.GetX() <= pWindow.GetWidth() - 17) {
+        if (direction && xypos.GetX() <= pWindow.GetWidth() - 17) {
             this.xypos.SetX(xypos.GetX() + 3);
-        } else if (direction == false && xypos.GetX() >= 0) {
+        } else if (!direction && xypos.GetX() >= 0) {
             this.xypos.SetX(xypos.GetX() - 3);
 
         }
-
     }
+
     @Override
-    public void Paint() {}
+    public void Paint() {
+    }
 
     /**
      * Handles shooting action of the player.
+     * Creates a shoot and adds it to the DAKKA collection if the shooting delay has passed.
      */
     public void Shooting() {
         long currentTime = System.currentTimeMillis();
@@ -56,6 +65,9 @@ public class Player extends Sprite {
         }
     }
 
+    /**
+     * Empty method for handling the player getting hit logic.
+     */
     public void GettingHit() {
     }
 }

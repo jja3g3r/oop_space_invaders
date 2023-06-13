@@ -3,7 +3,7 @@ package invaderlib;
 import processing.core.PApplet;
 
 public class Window extends PApplet {
-    private Health health;
+
     private int speed, width = 500, height = 600;
     private Navy navy;
     private DAKKA dakka;
