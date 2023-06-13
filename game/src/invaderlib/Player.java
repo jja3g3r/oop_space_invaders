@@ -42,9 +42,9 @@ public class Player extends Sprite {
     @Override
     public void Movement() {
         if (direction && xypos.GetX() <= pWindow.GetWidth() - 17) {
-            this.xypos.SetX(xypos.GetX() + 6);
+            this.xypos.SetX(xypos.GetX() + 12);
         } else if (!direction && xypos.GetX() >= 0) {
-            this.xypos.SetX(xypos.GetX() - 6);
+            this.xypos.SetX(xypos.GetX() - 12);
 
         }
     }
