@@ -92,7 +92,7 @@ public class Window extends PApplet {
                 alien.Paint();
 
                 // Check if an alien reaches the player
-                if (alien.GetXYpos().GetY() >= 540) {
+                if (alien.GetXYpos().GetY() >= 480) {
                     Death();
                 }
             }
