@@ -17,27 +17,29 @@ public class CollisionControl {
         boolean alienRemoved = false;  // Flag to track if an alien is removed
 
         for (int i = dakka.table.size() - 1; i >= 0; i--) {
-            Sprite d = dakka.table.get(i);
+            Shoot d = (Shoot) dakka.table.get(i);
 
             // Check for collisions between shots and aliens
-            for (int j = navy.table.size() - 1; j >= 0; j--) {
-                Sprite a = navy.table.get(j);
-                if (d.xypos.GetY() <= a.xypos.GetY() + 16 && d.xypos.GetY() >= a.xypos.GetY() &&
-                        d.xypos.GetX() <= a.xypos.GetX() + 24 && d.xypos.GetX() >= a.xypos.GetX() + 8) {
-                    a.Death();
-                    d.Death();
-                    alienRemoved = true;
+            if(!d.GetUPDOWN()){
+                for (int j = navy.table.size() - 1; j >= 0; j--) {
+                    Alien a = (Alien) navy.table.get(j);
+                    if (d.xypos.GetY() <= a.xypos.GetY() + 16 && d.xypos.GetY() >= a.xypos.GetY() &&
+                            d.xypos.GetX() <= a.xypos.GetX() + 24 && d.xypos.GetX() >= a.xypos.GetX() + 8) {
+                        a.Death();
+                        d.Death();
+                        alienRemoved = true;
+                    }
                 }
             }
 
             // Check for collisions between shots and cover blocks
             for (int j = 0; j < 4; j++) {
-                Sprite c = fortress.table.get(j);
+                Cover c = (Cover) fortress.table.get(j);
                 for (int x = 0; x < 48; x++) {
                     for (int y = 0; y < 32; y++) {
-                        if ((int) d.xypos.GetX() == (int) ((Cover) c).GetCollisionMap()[x][y].GetX() &&
-                                (int) d.xypos.GetY() == (int) ((Cover) c).GetCollisionMap()[x][y].GetY()) {
-                            ((Cover) c).Death(x, y);
+                        if ((int) d.xypos.GetX() == (int)  c.GetCollisionMap()[x][y].GetX() &&
+                                (int) d.xypos.GetY() == (int) c.GetCollisionMap()[x][y].GetY()) {
+                            c.Death(x, y);
                             d.Death();
                         }
                     }
@@ -45,12 +47,15 @@ public class CollisionControl {
             }
 
             // Check for collisions between shots and the player's spaceship
-            if (d.xypos.GetY() <= player.xypos.GetY() + 16 && d.xypos.GetY() >= player.xypos.GetY() &&
-                    d.xypos.GetX() <= player.xypos.GetX() + 31 && d.xypos.GetX() >= player.xypos.GetX() + 1) {
-                player.Death();
-                d.Death();
-                alienRemoved = true;
+            if(d.GetUPDOWN()){
+                if (d.xypos.GetY() <= player.xypos.GetY() + 16 && d.xypos.GetY() >= player.xypos.GetY() &&
+                        d.xypos.GetX() <= player.xypos.GetX() + 31 && d.xypos.GetX() >= player.xypos.GetX() + 1) {
+                    player.Death();
+                    d.Death();
+                    alienRemoved = true;
+                }
             }
+
         }
 
         return alienRemoved;  // Return the flag indicating if an alien is removed

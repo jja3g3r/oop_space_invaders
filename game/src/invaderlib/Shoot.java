@@ -97,4 +97,6 @@ public class Shoot extends Sprite {
             tick++;
         }
     }
+
+    public boolean GetUPDOWN() {return this.updown;}
 }
